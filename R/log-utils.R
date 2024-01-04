@@ -17,6 +17,6 @@ set_logger <- function(log_file, log_dir = "./log", overwrite = TRUE) {
   return(log_file %>% fs::path_abs() %>% invisible())
 }
 
-test_logger <- function(i) {
-  logger::log_info("{Sys.time()} this log fails for {i}...")  
+test_logger <- function(set_log, i) {
+  logger::log_info("{Sys.time()} this is a log for branch {i}...")  
 }

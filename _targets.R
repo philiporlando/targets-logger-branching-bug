@@ -27,7 +27,7 @@ list(
   tar_target(
     test_log_directly, {
       set_log # Establish dependency
-      logger::log_info("{Sys.time()} this log works!")
+      logger::log_info("{Sys.time()} this is a single log!")
     }
   ),
   tar_target(
@@ -36,9 +36,14 @@ list(
       1:10
     }
   ),
+  # Uncomment this target to reproduce the bug
+  # tar_target(
+  #   test_log_with_branching,
+  #   test_logger(set_log, i=branches),
+  #   pattern = map(branches)
+  # ),
   tar_target(
-    test_log_from_function,
-    test_logger(branches),
-    pattern = map(branches)
+    test_log_without_branching,
+    test_logger(set_log, i=1)
   )
 )
